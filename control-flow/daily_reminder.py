@@ -1,26 +1,27 @@
-task = input("Enter your task: ")
-
-priority = input("Priority (high/medium/low): ").lower()
-
-time_inten = input("Is it time-bound? (yes/no): ").lower()
-
-first_reminder = f"'{task}' is a {priority} priority task that requires immediate attention today!"
-
-second_reminder = f"'{task}' is a {priority} priority task. Consider completing it when you have free time."
+task = input("Enter your task:")
+priority = input("Priority (high/medium/low):")
+time_intens = input("Is it time-bound? (yes/no):")
+error_mess = "something went wrong!"
+first_part = f"{task} is a {priority} priority task"
 
 match priority:
-    case "high" : 
-        if time_inten == "yes":
-            print("Reminder:",first_reminder)
-        else:
-            print("Note:",second_reminder)
-    case "medium": 
-        if time_inten == "yes":
-            print("Reminder:",first_reminder)
-        else:
-            print("Note:",second_reminder)
-    case "low": 
-        if time_inten == "yes":
-            print("Reminder:",first_reminder)
-        else:
-            print("Note:",second_reminder)
+    case "high":
+        reminder = "that requires immediate attention today!"
+    case "medium":
+       reminder = "schedule it for later"
+    case "low":
+        reminder = "Consider completing it when you have free time."
+    case _ :
+        message = error_mess
+
+if time_intens == "yes":
+    reminder = "that requires immediate attention today!"
+elif time_intens == "no":
+    reminder = "Consider completing it when you have free time."
+else:
+    message = error_mess
+
+message = (f"Reminder: '{task}' is a {priority} priority task. that requires immediate attention today!" 
+           if time_intens == "yes" else "Consider completing it when you have free time.")
+print("Reminder: ", reminder)
+print(message)
