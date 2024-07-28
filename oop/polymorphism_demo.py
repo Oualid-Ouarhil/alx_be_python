@@ -3,7 +3,7 @@ class shape:
         raise NotImplementedError
 
 class rectangle(shape):
-    def __init__(self, length, width)
+    def __init__(self, length, width):
         self.length = length
         self.width = width
         
@@ -11,7 +11,7 @@ class rectangle(shape):
         return self.length * self.width
 
 class circle(shape):
-    def __init__(self, radius)
+    def __init__(self, radius):
         self.radius = radius
         
     def area(self):
